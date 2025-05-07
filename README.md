@@ -36,7 +36,9 @@ sp new dockerignore "vendor/\n*.log\ndocker-compose.override.yml"
 
 ### 2. Listar snippets
 
+```bash
 sp list
+```
 
 ### 3. Ver contenido de un snippet
 
