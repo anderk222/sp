@@ -62,4 +62,7 @@ func runNew(cmd *cobra.Command, args []string) {
 		fmt.Printf("Error: %v\n", err)
 		return
 	}
+
+	fmt.Println("Snippet saved successfully!")
+
 }
