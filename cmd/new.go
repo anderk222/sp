@@ -34,11 +34,16 @@ func init() {
 
 func runNew(cmd *cobra.Command, args []string) {
 
-	if len(args) < 2 {
+	lenArhgs := len(args)
+
+	if lenArhgs < 2 {
 		panic("Args are required example sp new <identifier snippet> <content snippet>")
 	}
-
 	item := snippet.Snippet{Name: args[0], Content: args[1]}
+
+	if lenArhgs >= 3 {
+		item.Description = args[2]
+	}
 
 	if err := snippet.SaveSnippetContent(snippet.GenerateFilenameContentSnippet(dataFile, item), &item); err != nil {
 

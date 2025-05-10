@@ -41,7 +41,6 @@ func listRun(cmd *cobra.Command, args []string) {
 	}
 
 	for key, val := range snippets {
-		fmt.Printf("\033[33mSnippet %s\033[0m \n Location: %s\n\n", key, val.FileContentName)
+		fmt.Printf("\033[33mSnippet %s\033[0m \n\n Description: %s \n Location: %s\n\n", key, val.Description, val.FileContentName)
 	}
-
 }

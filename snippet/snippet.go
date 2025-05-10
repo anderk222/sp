@@ -13,10 +13,8 @@ import (
 
 type Snippet struct {
 	Content         string `json:"-"`
-	CreatedAt       string
-	UpdatedAt       string
-	Author          string
 	Name            string
+	Description     string
 	FileContentName string
 }
 

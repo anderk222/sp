@@ -30,7 +30,7 @@ mv sp /usr/local/bin/
 ### 1. Crear un snippet
 
 ```bash
-sp new dockerignore "vendor/\n*.log\ndocker-compose.override.yml"
+sp new dockerignore "vendor/\n*.log\ndocker-compose.override.yml" "Code snippet for docker .gitignore"
 
 ```
 
