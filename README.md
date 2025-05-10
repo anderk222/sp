@@ -51,3 +51,9 @@ sp show dockerignore
 ```bash
 sp inject dockerignore .dockerignore
 ```
+
+### 5, Eliminar un snippet
+
+```bash
+sp delete dockerignore
+```

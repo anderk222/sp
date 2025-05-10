@@ -40,8 +40,6 @@ func SaveSnippets(fileName string, snippets map[string]Snippet) error {
 		return err
 	}
 
-	fmt.Println(string(n))
-
 	return nil
 }
 
@@ -140,7 +138,6 @@ func RetrieveSnippetContent(snippet Snippet) (string, error) {
 
 	bytes, err := os.ReadFile(snippet.FileContentName)
 	if err != nil {
-		fmt.Println(err)
 		return "", err
 	}
 
@@ -155,4 +152,32 @@ func GenerateFilenameContentSnippet(filenameInfoSnippets string, snippet Snippet
 		string(os.PathSeparator), snippet.Name)
 
 	return fileName
+}
+
+func DeleteSnippet(fileName, name string) error {
+	snippet, err := RetrieveSnippet(fileName, name)
+	if err != nil {
+		return err
+	}
+
+	err = os.Remove(snippet.FileContentName)
+
+	if err != nil {
+		// Si ocurre un error, lo reportamos
+		return fmt.Errorf("error deleting snippet file content: %w", err)
+	}
+
+	snippets, err := ReadItems(fileName)
+
+	if err != nil {
+		return fmt.Errorf("error reading items: %w", err)
+	}
+
+	delete(snippets, name)
+
+	err = SaveSnippets(fileName, snippets)
+	if err != nil {
+		return fmt.Errorf("error saving snippets after deletion: %w", err)
+	}
+	return nil
 }
